@@ -6,8 +6,18 @@
 <% end %>
 
 <% @enterprises.each do |enterprise| %>
-  <ul>
-    <li><%= enterprise.name %></li>
-  </ul>
-  <p>
+  <dl>
+    <dt><%= Enterprise.human_attribute_name(:name) %></dt>
+    <dd><%= enterprise.name %></dd>
+    <dt><%= Enterprise.human_attribute_name(:cnpj) %></dt>
+    <dd><%= enterprise.cnpj %></dd>
+    <dt><%= Enterprise.human_attribute_name(:email) %></dt>
+    <dd><%= enterprise.email %></dd>
+    <dt><%= Enterprise.human_attribute_name(:country) %></dt>
+    <dd><%= enterprise.country %></dd>
+    <dt><%= Enterprise.human_attribute_name(:state) %></dt>
+    <dd><%= enterprise.state %></dd>
+    <dt><%= Enterprise.human_attribute_name(:address) %></dt>
+    <dd><%= enterprise.address %></dd>
+  </dl>
 <% end %>

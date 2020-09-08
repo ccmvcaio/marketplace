@@ -1,0 +1,16 @@
+---
+pt-BR:
+  activerecord:
+    model:
+      enterprise:
+        one: 'Empresa'
+        other: 'Empresas'
+    attributes:
+      enterprise:
+        name: 'Nome'
+        cnpj: 'CNPJ'
+        address: 'Endereço'
+        email: 'email'
+        country: 'País'
+        state: 'Estado'
+        domain: 'Domínio'

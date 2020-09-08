@@ -12,6 +12,11 @@ feature 'User view enterprise' do
 
     expect(page).to have_content('Empresa:')
     expect(page).to have_content('Alimentos Estrela')
+    expect(page).to have_content('41.736.335/0001-50')
+    expect(page).to have_content('comercial@estrela.com')
+    expect(page).to have_content('Brasil')
+    expect(page).to have_content('São Paulo')
+    expect(page).to have_content('Rua Dois, 22')
     expect(page).to have_link('Voltar', href: root_path)
   end
 
