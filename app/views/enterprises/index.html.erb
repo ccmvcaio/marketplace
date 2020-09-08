@@ -1,0 +1,13 @@
+<h1>Empresas cadastradas:</h1>
+<%= link_to 'Voltar', root_path %>
+
+<% if @enterprises.empty? %>
+  <h3>Nenhuma empresa cadastrada</h3>
+<% end %>
+
+<% @enterprises.each do |enterprise| %>
+  <ul>
+    <li><%= enterprise.name %></li>
+  </ul>
+  <p>
+<% end %>
