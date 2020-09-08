@@ -10,10 +10,7 @@ feature 'User view enterprise' do
   end
 
   scenario 'successfully' do
-    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
-                    email: 'caio.valerio@estrela.com', password: '123456',
-                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
-                    cpf: '541.268.930-24')
+    user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
                                     state: 'São Paulo', address: 'Rua Dois, 22',)
@@ -33,10 +30,7 @@ feature 'User view enterprise' do
   end
 
   scenario 'and see only user enterprise' do
-    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
-                    email: 'caio.valerio@estrela.com', password: '123456',
-                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
-                    cpf: '541.268.930-24')
+    user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
                                     state: 'São Paulo', address: 'Rua Dois, 22',)
@@ -61,10 +55,7 @@ feature 'User view enterprise' do
   end
 
   scenario 'and must have an enterprise domain' do
-    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
-                    email: 'caio.valerio@gmail.com', password: '123456',
-                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
-                    cpf: '541.268.930-24')
+    user = User.create!(email: 'caio.valerio@gmail.com', password: '123456')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
                                     state: 'São Paulo', address: 'Rua Dois, 22',)

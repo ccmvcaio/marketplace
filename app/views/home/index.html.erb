@@ -1,7 +1,6 @@
 <h1>Market Place</h1>
 
 <% if user_signed_in? %>
-  <%= current_user.social_name %>
   <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to 'Entrar', new_user_session_path %>

@@ -20,10 +20,7 @@ feature 'user sign in' do
   end
 
   scenario 'and logs in' do
-    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
-                    email: 'caio.valerio@estrela.com', password: '123456',
-                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
-                    cpf: '541.268.930-24')
+    user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
   
     visit root_path
     click_on 'Entrar'
@@ -31,7 +28,6 @@ feature 'user sign in' do
     fill_in 'Senha', with: '123456'
     click_on 'Entrar'
     
-    expect(page).to have_content('Caio César')
     expect(page).to have_content('Market Place')
     expect(page).to have_content('Login efetuado com sucesso')
     expect(page).to_not have_link('Entrar')
@@ -39,10 +35,7 @@ feature 'user sign in' do
   end
 
   scenario 'and logs out' do
-    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
-                    email: 'caio.valerio@estrela.com', password: '123456',
-                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
-                    cpf: '541.268.930-24')
+    user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
             
     login_as(user, scope: :user)
     visit root_path
@@ -50,7 +43,6 @@ feature 'user sign in' do
 
     expect(page).to_not have_link('Sair')
     expect(page).to have_link('Entrar')
-    expect(page).to_not have_content('Caio César')
     expect(current_path).to eq root_path
     expect(page).to have_content('Logout efetuado com sucesso.')
   end
