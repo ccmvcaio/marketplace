@@ -1,3 +1,10 @@
 <h1>Market Place</h1>
 
-<%= link_to 'Empresas cadastradas', enterprises_path %>
+<% if user_signed_in? %>
+  <%= current_user.social_name %>
+  <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Entrar', new_user_session_path %>
+<% end %>
+
+<%= link_to 'Empresa', enterprises_path %>

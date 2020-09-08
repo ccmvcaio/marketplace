@@ -1,12 +1,25 @@
 require 'rails_helper'
 
 feature 'User view enterprise' do
+  scenario 'and must be logged in'do
+    visit root_path
+    click_on 'Empresa'
+
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content('Para continuar, faça login ou registre-se.')
+  end
+
   scenario 'successfully' do
+    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
+                    email: 'caio.valerio@estrela.com', password: '123456',
+                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
+                    cpf: '541.268.930-24')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
                                     state: 'São Paulo', address: 'Rua Dois, 22',
                                     domain: 'estrela.com')
     
+    login_as(user, scope: :user)
     visit root_path
     click_on 'Empresa'
 
