@@ -16,8 +16,7 @@ feature 'User view enterprise' do
                     cpf: '541.268.930-24')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
-                                    state: 'São Paulo', address: 'Rua Dois, 22',
-                                    domain: 'estrela.com')
+                                    state: 'São Paulo', address: 'Rua Dois, 22',)
     
     login_as(user, scope: :user)
     visit root_path
@@ -33,28 +32,49 @@ feature 'User view enterprise' do
     expect(page).to have_link('Voltar', href: root_path)
   end
 
-  xscenario 'and see only user enterprise' do
+  scenario 'and see only user enterprise' do
+    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
+                    email: 'caio.valerio@estrela.com', password: '123456',
+                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
+                    cpf: '541.268.930-24')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
-                                    state: 'São Paulo', address: 'Rua Dois, 22',
-                                    domain: 'estrela.com')
+                                    state: 'São Paulo', address: 'Rua Dois, 22',)
     another_enterprise = Enterprise.create!(name: 'Comp Tec', cnpj: '91.359.154/0001-20',
                                             email: 'contato@comptec.com',country: 'Brasil',
-                                            state: 'São Paulo', address: 'Rua Quatro, 44',
-                                            domain: 'comptec.com')
+                                            state: 'São Paulo', address: 'Rua Quatro, 44')
 
+  login_as(user, scope: :user)
   visit root_path
-  click_on 'Empresas'
+  click_on 'Empresa'
 
   expect(page).to have_content('Alimentos Estrela')
   expect(page).to have_content('41.736.335/0001-50')
   expect(page).to have_content('comercial@estrela.com')
-  expect(page).to have_content('Brasil', conut: 1)
-  expect(page).to have_content('São Paulo', count: 1)
+  expect(page).to have_content('Brasil')
+  expect(page).to have_content('São Paulo')
   expect(page).to have_content('Rua Dois, 22')
-  expect(page).to_not have_content('CompTec')
+  expect(page).to_not have_content('Comp Tec')
   expect(page).to_not have_content('91.359.154/0001-20')
   expect(page).to_not have_content('contato@comptec.com')
   expect(page).to_not have_content('Rua Quatro, 44')
+  end
+
+  scenario 'and must have an enterprise domain' do
+    user = User.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
+                    email: 'caio.valerio@gmail.com', password: '123456',
+                    date_of_birth: '02/02/1992', role: 'Dev', department: 'Tecnologia',
+                    cpf: '541.268.930-24')
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22',)
+  
+    login_as(user, scope: :user)
+    visit root_path
+    click_on 'Empresa'
+
+    expect(page).to have_content('Conta inválida')
+    expect(page).to have_content('Verificar com a empresa responsável')
+    expect(page).to_not have_content('Alimentos Estrela')
   end
 end

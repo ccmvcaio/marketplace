@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # :recoverable
   devise :database_authenticatable, :registerable, :validatable, :rememberable
+  has_one :enterprise
 
   before_create :set_email_domain
 

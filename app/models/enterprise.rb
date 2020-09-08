@@ -1,4 +1,5 @@
 class Enterprise < ApplicationRecord
+  has_many :users
 
   before_create :set_email_domain
 

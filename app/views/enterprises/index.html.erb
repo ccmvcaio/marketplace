@@ -1,23 +1,22 @@
 <h1>Empresa:</h1>
 <%= link_to 'Voltar', root_path %>
 
-<% if @enterprises.empty? %>
-  <h3>Nenhuma empresa cadastrada</h3>
-<% end %>
-
-<% @enterprises.each do |enterprise| %>
+<% if @enterprise.nil? %>
+  <h1>Conta inválida</h1>
+  <h3>Verificar com a empresa responsável</h3>
+<% else %>
   <dl>
     <dt><%= Enterprise.human_attribute_name(:name) %></dt>
-    <dd><%= enterprise.name %></dd>
+    <dd><%= @enterprise.name %></dd>
     <dt><%= Enterprise.human_attribute_name(:cnpj) %></dt>
-    <dd><%= enterprise.cnpj %></dd>
+    <dd><%= @enterprise.cnpj %></dd>
     <dt><%= Enterprise.human_attribute_name(:email) %></dt>
-    <dd><%= enterprise.email %></dd>
+    <dd><%= @enterprise.email %></dd>
     <dt><%= Enterprise.human_attribute_name(:country) %></dt>
-    <dd><%= enterprise.country %></dd>
+    <dd><%= @enterprise.country %></dd>
     <dt><%= Enterprise.human_attribute_name(:state) %></dt>
-    <dd><%= enterprise.state %></dd>
+    <dd><%= @enterprise.state %></dd>
     <dt><%= Enterprise.human_attribute_name(:address) %></dt>
-    <dd><%= enterprise.address %></dd>
+    <dd><%= @enterprise.address %></dd>
   </dl>
 <% end %>
