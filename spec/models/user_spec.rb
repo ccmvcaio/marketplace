@@ -10,20 +10,4 @@ RSpec.describe User, type: :model do
       expect(domain).to eq 'estrela.com'
     end
   end
-
-  xcontext 'CPF' do
-    it 'must be valid' do
-      user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
-      another_user = User.create!(full_name: 'José Silva', social_name: 'José', 
-                      email: 'jose.silva@estrela.com', password: '123456',
-                      date_of_birth: '01/01/1991', role: 'Adm', department: 'Financeiro',
-                      cpf: '541.268.930-24')
-      
-      
-    end
-
-    it 'must be unique' do
-
-    end
-  end
 end
