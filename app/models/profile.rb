@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
             :department, :role, presence: true
   validates :cpf, uniqueness: true
   validate :cpf_must_be_valid
+  has_many :products
 
   def cpf_must_be_valid
     if cpf.present? && !CPF.valid?(cpf, strict: true)

@@ -1,0 +1,9 @@
+<% if @products.empty? %>
+  <h3>Nenhum produto anunciado!</h3>
+<% else %>
+  <% @products.each do |product| %>
+    <% if product.profile.user.email_domain == current_user.email_domain %>
+      <p><%= "#{product.name} - #{number_to_currency product.price}"%></p>
+    <% end %>
+  <% end %>
+<% end %>
