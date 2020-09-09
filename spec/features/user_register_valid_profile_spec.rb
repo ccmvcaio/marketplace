@@ -4,8 +4,8 @@ xfeature 'User register valid profile' do
 
     login_as(user, scope: :user)
     visit root_path
-    click_on 'Perfil'
-    click_on 'Registrar perfil'
+    click_on 'Perfis'
+    click_on 'Meu perfil'
     fill_in 'Nome completo', with: 'Caio César Valério'
     fill_in 'Nome social', with: 'Caio César'
     fill_in 'Cargo', with: 'Desenvolvedor Júnior'

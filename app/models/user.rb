@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # :recoverable
   devise :database_authenticatable, :registerable, :validatable, :rememberable
   has_one :enterprise
+  has_one :profile
 
   before_create :set_email_domain
 

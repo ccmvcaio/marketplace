@@ -1,0 +1,18 @@
+<%= link_to 'Voltar', profiles_path %>
+
+<dl>
+  <dt><%= Profile.human_attribute_name(:full_name) %></dt>
+  <dd><%= @profile.full_name %></dd>
+  <dt><%= Profile.human_attribute_name(:social_name) %></dt>
+  <dd><%= @profile.social_name %></dd>
+  <dt><%= Profile.human_attribute_name(:cpf) %></dt>
+  <dd><%= @profile.cpf %></dd>
+  <dt><%= Profile.human_attribute_name(:birth_date) %></dt>
+  <dd><%= l @profile.birth_date %></dd>
+  <dt><%= Profile.human_attribute_name(:department) %></dt>
+  <dd><%= @profile.department %></dd>
+  <dt><%= Profile.human_attribute_name(:role) %></dt>
+  <dd><%= @profile.role %></dd>
+  <dt><%= Profile.human_attribute_name(:email) %></dt>
+  <dd><%= @profile.user.email %></dd>
+</dl>
