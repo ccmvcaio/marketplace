@@ -1,0 +1,31 @@
+<% if @profile.errors.present? %>
+  <% @profile.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+  <% end %>
+<% end %>
+
+<%= form_with model: @profile, local: true do |f| %>
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name %>
+  <div>
+  <%= f.label :social_name %>
+  <%= f.text_field :social_name %>
+  </div>
+  <div>
+  <%= f.label :cpf %>
+  <%= f.text_field :cpf %>
+  </div>
+  <div>
+  <%= f.label :birth_date %>
+  <%= f.date_field :birth_date %>
+  </div>
+  <div>
+  <%= f.label :department %>
+  <%= f.text_field :department %>
+  </div>
+  <div>
+  <%= f.label :role %>
+  <%= f.text_field :role %>
+  </div>
+  <%= f.submit 'Registrar' %>
+<% end %>

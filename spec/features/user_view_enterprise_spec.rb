@@ -13,7 +13,7 @@ feature 'User view enterprise' do
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
-                                    state: 'São Paulo', address: 'Rua Dois, 22',)
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     
     login_as(user, scope: :user)
     visit root_path

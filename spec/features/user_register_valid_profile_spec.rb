@@ -1,4 +1,4 @@
-xfeature 'User register valid profile' do
+feature 'User register valid profile' do
   scenario 'successfully' do
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
 
@@ -20,5 +20,22 @@ xfeature 'User register valid profile' do
     expect(page).to have_content('Tecnologia')
     expect(page).to have_content('541.268.930-24')
     expect(page).to have_content('caio.valerio@estrela.com')
+  end
+
+  scenario 'and must not be blank' do
+    user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
+
+    login_as(user, scope: :user)
+    visit root_path
+    click_on 'Perfis'
+    click_on 'Meu perfil'
+    fill_in 'Data de nascimento', with: ''
+    click_on 'Registrar'
+
+    expect(page).to have_content('não pode ficar em branco', count: 6)
+  end
+
+  scenario 'cpf must be unique' do
+    
   end
 end
