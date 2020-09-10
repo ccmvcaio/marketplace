@@ -8,6 +8,8 @@ class Profile < ApplicationRecord
   validates :cpf, uniqueness: true
   validate :cpf_must_be_valid
 
+  private
+
   def cpf_must_be_valid
     if cpf.present? && !CPF.valid?(cpf, strict: true)
       errors.add(:cpf, 'inválido')

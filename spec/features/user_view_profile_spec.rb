@@ -71,4 +71,15 @@ feature 'User view profile' do
     expect(page).to have_content('Perfis')
     expect(current_path).to eq profiles_path
   end
+
+  scenario 'and must have an enterprise' do
+    user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
+
+    login_as(user, scope: :user)
+    visit root_path
+    click_on 'Perfis'
+
+    expect(page).to have_content('Conta inválida')
+    expect(page).to have_content('Verificar com a empresa responsável')
+  end
 end

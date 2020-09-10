@@ -2,8 +2,13 @@
 
 <%= link_to 'Voltar', root_path %>
 
-<% if current_user.profile.nil?%>
-  <%= link_to 'Meu perfil', new_profile_path %>
+<% if @enterprise.nil? %>
+  <h1>Conta inválida</h1>
+  <h3>Verificar com a empresa responsável</h3>
 <% else %>
-  <%= link_to 'Meu perfil', profile_path(current_user.profile) %>
+  <% if current_user.profile.nil?%>
+    <%= link_to 'Meu perfil', new_profile_path %>
+  <% else %>
+    <%= link_to 'Meu perfil', profile_path(current_user.profile) %>
+  <% end %>
 <% end %>

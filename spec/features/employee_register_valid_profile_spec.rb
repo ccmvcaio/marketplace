@@ -1,4 +1,4 @@
-feature 'User register valid profile' do
+feature 'Employee register valid profile' do
   scenario 'successfully' do
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',

@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create]
   
   def index
+    @enterprise = Enterprise.find_by(domain:(current_user.email_domain))
   end
 
   def new
