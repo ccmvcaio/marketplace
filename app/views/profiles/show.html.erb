@@ -20,3 +20,9 @@
   <dt><%= Profile.human_attribute_name(:email) %></dt>
   <dd><%= @profile.user.email %></dd>
 </dl>
+
+<ul>
+  <% @profile.products.each do |product| %>
+    <li><%= link_to "#{product.name} - #{number_to_currency product.price}", product %></li>
+  <% end %>
+</ul>

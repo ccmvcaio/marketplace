@@ -9,7 +9,7 @@
 #Users
 user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
 second_user = User.create!(email: 'ana.santos@estrela.com', password: '123456')
-third_user = User.create!(email: 'lucas.silva@estrela.com', password: '123456')
+third_user = User.create!(email: 'lucas.silva@comptec.com', password: '123456')
 
 #Profiles
 profile = Profile.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
@@ -22,7 +22,7 @@ second_profile = Profile.create!(full_name: 'Ana Santos', social_name: 'Ana',
 third_profile = Profile.create!(full_name: 'Lucas Silva e Silva', social_name: 'Lucas',
                                 birth_date: '11/02/1999', role: 'Contador',
                                 department: 'Financeiro', cpf: '209.902.990-31',
-                                user: third_user)
+                                user: third_user, enterprise: another_enterprise)
 #Enterprises
 enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                 email: 'comercial@estrela.com', country: 'Brasil',
