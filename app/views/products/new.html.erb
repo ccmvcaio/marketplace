@@ -1,0 +1,23 @@
+<% if @product.errors.present? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+
+<%= form_with model: @product, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <div>
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+  </div>
+  <div>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  </div>
+  <div>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  </div>
+  <%= f.submit 'Anunciar'%>
+<% end %>

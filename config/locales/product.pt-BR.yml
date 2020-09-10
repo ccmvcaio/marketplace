@@ -1,0 +1,15 @@
+---
+pt-BR:
+  activerecord:
+    model:
+      product:
+        one: 'Produto'
+        other: 'Produtos'
+    attributes:
+      product:
+        name: 'Nome'
+        category: 'Categoria'
+        price: 'Preço'
+        description: 'Descrição'
+        profile: 'Perfil'
+        profile_id: 'Perfil'

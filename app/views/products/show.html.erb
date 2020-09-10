@@ -1,0 +1,12 @@
+<%= link_to 'Voltar', products_path %>
+
+<dl>
+  <dt><%= Product.human_attribute_name(:name) %></dt>
+  <dd><%= @product.name %></dd>
+  <dt><%= Product.human_attribute_name(:category) %></dt>
+  <dd><%= @product.category %></dd>
+  <dt><%= Product.human_attribute_name(:price) %></dt>
+  <dd><%= number_to_currency @product.price %></dd>
+  <dt><%= Product.human_attribute_name(:description) %></dt>
+  <dd><%= @product.description %></dd>
+</dl>
