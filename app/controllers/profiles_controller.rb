@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   
   def index
     @enterprise = Enterprise.find_by(domain:(current_user.email_domain))
+    @profiles = Profile.where(enterprise: @enterprise)
   end
 
   def new

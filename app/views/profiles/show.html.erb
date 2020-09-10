@@ -5,10 +5,12 @@
   <dd><%= @profile.full_name %></dd>
   <dt><%= Profile.human_attribute_name(:social_name) %></dt>
   <dd><%= @profile.social_name %></dd>
-  <dt><%= Profile.human_attribute_name(:cpf) %></dt>
-  <dd><%= @profile.cpf %></dd>
-  <dt><%= Profile.human_attribute_name(:birth_date) %></dt>
-  <dd><%= l @profile.birth_date, default: '' %></dd>
+  <% if current_user.profile == @profile %>
+    <dt><%= Profile.human_attribute_name(:cpf) %></dt>
+    <dd><%= @profile.cpf %></dd>
+    <dt><%= Profile.human_attribute_name(:birth_date) %></dt>
+    <dd><%= l @profile.birth_date, default: '' %></dd>
+  <% end %>
   <dt><%= Profile.human_attribute_name(:enterprise) %></dt>
   <dd><%= @profile.enterprise.name %></dd>
   <dt><%= Profile.human_attribute_name(:department) %></dt>

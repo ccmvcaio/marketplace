@@ -12,3 +12,9 @@
     <p><%= link_to 'Meu perfil', profile_path(current_user.profile) %></p>
   <% end %>
 <% end %>
+
+<ul>
+<% @profiles.each do |profile| %>
+  <li><%= link_to "#{profile.social_name} - #{profile.department}", profile%></li>
+<% end %>
+</ul>
