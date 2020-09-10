@@ -96,7 +96,7 @@ feature 'employee view products of same company employees' do
     visit root_path
     click_on 'Produtos'
 
-    expect(page).to have_content('Nenhum produto anunciado!')
+    expect(page).to have_content('Nenhum produto encontrado!')
   end
 
   scenario 'and there are no products announced from own company' do
@@ -124,7 +124,7 @@ feature 'employee view products of same company employees' do
     click_on 'Produtos'
 
     expect(page).to_not have_content('Pneu - R$ 250,00')
-    expect(page).to have_content('Nenhum produto anunciado!')
+    expect(page).to have_content('Nenhum produto encontrado!')
   end
 
   scenario 'and come back to hame page' do

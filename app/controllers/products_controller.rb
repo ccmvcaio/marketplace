@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :search]
 
   def index
     @products = Product.all
@@ -22,7 +22,14 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @profile = @product.profile
+  end
+
+  def search
+    @products = Product.where("name LIKE (?)", "%#{params[:q]}%")
+            .or(Product.where("category LIKE (?)", "%#{params[:q]}%")
+            .or(Product.where("description LIKE (?)", "%#{params[:q]}%")))
+    @available_products = set_available_products(@products)
+    render :index
   end
 
   private

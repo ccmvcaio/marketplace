@@ -1,8 +1,13 @@
 <%= link_to 'Voltar', root_path %>
 <p><%= link_to 'Anunciar um produto', new_product_path %></p>
+<p><%= form_with url: search_products_path, method: :get , local: true do |f| %></p>
+  <%= f.label :q, 'Buscar produto' %>
+  <%= f.text_field :q %>
+  <%= f.submit 'Buscar'%>
+<% end %>
 
 <% if @available_products.empty? %>
-  <h3>Nenhum produto anunciado!</h3>
+  <h3>Nenhum produto encontrado!</h3>
 <% else %>
   <ul>
   <% @available_products.each do |product| %>

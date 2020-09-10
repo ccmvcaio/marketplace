@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index' 
   resources :enterprises, only: [:index]
   resources :profiles, only: [:index, :show, :new, :create]
-  resources :products, only: [:index, :show, :new, :create]
+  resources :products, only: [:index, :show, :new, :create] do
+    get 'search', on: :collection
+  end
 end
