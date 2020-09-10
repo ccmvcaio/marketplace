@@ -18,12 +18,14 @@ feature 'Employee announce a product' do
     fill_in 'Categoria', with: 'Cozinha'
     fill_in 'Preço', with: '50,00'
     fill_in 'Descrição', with: 'Panela usada com poucos arranhados'
+    attach_file 'Imagens', Rails.root.join('spec/support/panela.jpg')
     click_on 'Anunciar'
 
     expect(page).to have_content('Panela')
     expect(page).to have_content('Cozinha')
     expect(page).to have_content('R$ 50,00')
     expect(page).to have_content('Panela usada com poucos arranhados')
+    expect(page).to have_css('img[src*="panela.jpg"]')
     expect(page).to have_link('Voltar', href: products_path)
   end
 
