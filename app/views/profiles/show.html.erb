@@ -9,6 +9,8 @@
   <dd><%= @profile.cpf %></dd>
   <dt><%= Profile.human_attribute_name(:birth_date) %></dt>
   <dd><%= l @profile.birth_date, default: '' %></dd>
+  <dt><%= Profile.human_attribute_name(:enterprise) %></dt>
+  <dd><%= @profile.enterprise.name %></dd>
   <dt><%= Profile.human_attribute_name(:department) %></dt>
   <dd><%= @profile.department %></dd>
   <dt><%= Profile.human_attribute_name(:role) %></dt>

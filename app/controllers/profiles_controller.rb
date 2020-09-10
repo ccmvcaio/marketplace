@@ -11,6 +11,8 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    @enterprises = Enterprise.all
+    @profile.enterprise = set_enterprise(@enterprises)    
     if @profile.save
       redirect_to @profile
     else
@@ -27,5 +29,11 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:full_name, :social_name, :cpf,
                                     :birth_date, :department, :role)
+  end
+
+  def set_enterprise(enterprises)
+    enterprises.each do |enterprise|
+      return enterprise if current_user.email_domain == enterprise.domain
+    end
   end
 end

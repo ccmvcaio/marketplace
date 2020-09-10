@@ -1,5 +1,8 @@
 feature 'User register valid profile' do
   scenario 'successfully' do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
 
     login_as(user, scope: :user)
@@ -23,6 +26,9 @@ feature 'User register valid profile' do
   end
 
   scenario 'and must not be blank' do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
 
     login_as(user, scope: :user)
@@ -36,12 +42,15 @@ feature 'User register valid profile' do
   end
 
   scenario 'and cpf must be unique' do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     other_user = User.create!(email: 'jose.maria@estrela.com', password: '123456')
     other_profile = Profile.create!(full_name: 'José Maria', social_name: 'Zé', 
                                     birth_date: '02/12/1992', role: 'Dev',
                                     department: 'Tecnologia', cpf: '541.268.930-24',
-                                    user: other_user)
+                                    user: other_user, enterprise: enterprise)
 
     login_as(user, scope: :user)
     visit root_path
@@ -59,6 +68,9 @@ feature 'User register valid profile' do
   end
 
   scenario 'and CPF must be valid'  do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
 
     login_as(user, scope: :user)

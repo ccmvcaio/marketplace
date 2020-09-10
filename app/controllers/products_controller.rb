@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   private
 
   def set_available_products(products)
-    products.find_all {|product| product.profile.user.email_domain == current_user.email_domain}
+    products.find_all {|product| product.profile.enterprise_id == 
+                                 current_user.profile.enterprise_id}
   end
 end

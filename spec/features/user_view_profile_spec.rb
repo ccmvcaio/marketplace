@@ -8,10 +8,14 @@ feature 'User view profile' do
   end
 
   scenario 'successfully' do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     profile = Profile.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
                         birth_date: '02/12/1992', role: 'Dev',
-                        department: 'Tecnologia', cpf: '541.268.930-24', user: user)
+                        department: 'Tecnologia', cpf: '541.268.930-24', user: user,
+                        enterprise: enterprise)
 
     login_as(user, scope: :user)
     visit root_path
@@ -21,6 +25,7 @@ feature 'User view profile' do
     expect(page).to have_content('Caio Valério')
     expect(page).to have_content('Caio César')
     expect(page).to have_content('02/12/1992')
+    expect(page).to have_content('Alimentos Estrela')
     expect(page).to have_content('Dev')
     expect(page).to have_content('Tecnologia')
     expect(page).to have_content('541.268.930-24')
@@ -29,10 +34,14 @@ feature 'User view profile' do
   end
 
   scenario 'and return to home' do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     profile = Profile.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
                         birth_date: '02/12/1992', role: 'Dev',
-                        department: 'Tecnologia', cpf: '541.268.930-24', user: user)
+                        department: 'Tecnologia', cpf: '541.268.930-24', user: user,
+                        enterprise: enterprise)
 
     login_as(user, scope: :user)
     visit root_path
@@ -44,10 +53,14 @@ feature 'User view profile' do
   end
 
   scenario 'and return to profiles path' do
+    enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
+                                    email: 'comercial@estrela.com', country: 'Brasil',
+                                    state: 'São Paulo', address: 'Rua Dois, 22')
     user = User.create!(email: 'caio.valerio@estrela.com', password: '123456')
     profile = Profile.create!(full_name: 'Caio Valério', social_name: 'Caio César', 
                         birth_date: '02/12/1992', role: 'Dev',
-                        department: 'Tecnologia', cpf: '541.268.930-24', user: user)
+                        department: 'Tecnologia', cpf: '541.268.930-24', user: user,
+                        enterprise: enterprise)
 
     login_as(user, scope: :user)
     visit root_path

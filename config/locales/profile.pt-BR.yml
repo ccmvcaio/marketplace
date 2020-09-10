@@ -16,3 +16,5 @@ pt-BR:
         email: 'Email'
         user: 'Usuário'
         user_id: 'Usuário'
+        enterprise: 'Empresa'
+        enterprise_id: 'Empresa'
