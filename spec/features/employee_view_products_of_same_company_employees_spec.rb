@@ -96,7 +96,7 @@ feature 'employee view products of same company employees' do
     expect(page).to have_content('Nenhum produto anunciado!')
   end
 
-  xscenario 'and there are no products announced from own company' do
+  scenario 'and there are no products announced from own company' do
     enterprise = Enterprise.create!(name: 'Alimentos Estrela', cnpj: '41.736.335/0001-50',
                                     email: 'comercial@estrela.com', country: 'Brasil',
                                     state: 'São Paulo', address: 'Rua Dois, 22')
