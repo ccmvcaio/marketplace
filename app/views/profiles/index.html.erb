@@ -7,8 +7,8 @@
   <h3>Verificar com a empresa responsável</h3>
 <% else %>
   <% if current_user.profile.nil?%>
-    <%= link_to 'Meu perfil', new_profile_path %>
+    <p><%= link_to 'Meu perfil', new_profile_path %></p>
   <% else %>
-    <%= link_to 'Meu perfil', profile_path(current_user.profile) %>
+    <p><%= link_to 'Meu perfil', profile_path(current_user.profile) %></p>
   <% end %>
 <% end %>

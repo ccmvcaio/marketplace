@@ -1,10 +1,12 @@
 <%= link_to 'Voltar', root_path %>
-<%= link_to 'Anunciar um produto', new_product_path %>
+<p><%= link_to 'Anunciar um produto', new_product_path %></p>
 
 <% if @available_products.empty? %>
   <h3>Nenhum produto anunciado!</h3>
 <% else %>
+  <ul>
   <% @available_products.each do |product| %>
-      <p><%=link_to "#{product.name} - #{number_to_currency product.price}", product%></p>
+      <li><%=link_to "#{product.name} - #{number_to_currency product.price}", product%></li>
   <% end %>
+  </ul>
 <% end %>
