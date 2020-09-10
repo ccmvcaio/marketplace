@@ -5,6 +5,6 @@
   <h3>Nenhum produto anunciado!</h3>
 <% else %>
   <% @available_products.each do |product| %>
-      <p><%= "#{product.name} - #{number_to_currency product.price}"%></p>
+      <p><%=link_to "#{product.name} - #{number_to_currency product.price}", product%></p>
   <% end %>
 <% end %>

@@ -9,6 +9,8 @@
   <dd><%= number_to_currency @product.price %></dd>
   <dt><%= Product.human_attribute_name(:description) %></dt>
   <dd><%= @product.description %></dd>
+  <dt>Anunciante:</dt>
+  <dd><%= @product.profile.social_name %></dd>
   <dt><%= Product.human_attribute_name(:images) %></dt>
   <% @product.images.each do |image| %>
     <dd><%= image_tag image %></dd>
