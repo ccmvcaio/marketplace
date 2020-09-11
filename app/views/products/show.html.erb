@@ -32,8 +32,8 @@
   <%= f.submit 'Enviar' %>
 <% end %>
 
-<% if @product.available? %>
-  <%= link_to 'Comprar', new_product_sales_path(@product.id) %>
-<% else %>
+<% if @product.waiting_confirmation? %>
   <strong>Aguardando confirmação de venda</strong>
+<% else %>
+  <%= link_to 'Comprar', new_product_sales_path(@product.id) %>
 <% end %>

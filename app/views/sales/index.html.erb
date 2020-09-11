@@ -1,6 +1,11 @@
-
+<ul>
 <% @current_profile_products.each do |product| %>
-  <%= return "#{product.name} - Aguardando confirmação" if product.waiting_confirmation? %>
+  <% if product.waiting_confirmation? %>
+    <li><%= link_to "#{product.name} - Aguardando confirmação", product %></li>
+  <% elsif product.sold? %>
+    <li><%= "#{product.name} - Vendido" %></li>
+  <% else %>
+    <li><%= "#{product.name} - Disponível" %></li>
+  <% end %>
 <% end %>
-
-soaeiu
+</ul>
