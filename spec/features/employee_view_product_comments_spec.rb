@@ -18,6 +18,8 @@ feature 'Employee view products comments' do
                               profile: second_profile)
     comment = Comment.create!(send_date: Date.current, body: 'Qual motivo da venda?',
                               profile: second_profile, product: product)
+    second_comment = Comment.create!(send_date: Date.current, body: 'Tem ferrugem?',
+                                     profile: second_profile, product: product)
 
     login_as(user, scope: :user)
     visit root_path
@@ -30,5 +32,6 @@ feature 'Employee view products comments' do
     expect(page).to have_content('Panela pouco usada com pequenos arranhados')
     expect(page).to have_link('Ana')
     expect(page).to have_content('Qual motivo da venda?')
+    expect(page).to have_content('Tem ferrugem?')
   end
 end
