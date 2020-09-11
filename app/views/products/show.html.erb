@@ -1,21 +1,6 @@
 <%= link_to 'Voltar', products_path %>
 
-<dl>
-  <dt><%= Product.human_attribute_name(:name) %></dt>
-  <dd><%= @product.name %></dd>
-  <dt><%= Product.human_attribute_name(:category) %></dt>
-  <dd><%= @product.category %></dd>
-  <dt><%= Product.human_attribute_name(:price) %></dt>
-  <dd><%= number_to_currency @product.price %></dd>
-  <dt><%= Product.human_attribute_name(:description) %></dt>
-  <dd><%= @product.description %></dd>
-  <dt>Anunciante:</dt>
-  <dd><%= link_to "#{@product.profile.social_name}", @product.profile %></dd>
-  <dt><%= Product.human_attribute_name(:images) %></dt>
-  <% @product.images.each do |image| %>
-    <dd><%= image_tag image %></dd>
-  <% end %>
-</dl>
+<%= render @product %>
 
 <p><h3>Comentários:</h3></p>
 <% @product.comments.each do |comment| %>
@@ -34,6 +19,7 @@
 
 <% if @product.waiting_confirmation? %>
   <strong>Aguardando confirmação de venda</strong>
+  <%= link_to 'Confirmar venda', edit_product_sales_path(@product.id) %>
 <% else %>
   <%= link_to 'Comprar', new_product_sales_path(@product.id) %>
 <% end %>

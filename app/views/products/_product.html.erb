@@ -1,0 +1,16 @@
+<dl>
+  <dt><%= Product.human_attribute_name(:name) %></dt>
+  <dd><%= @product.name %></dd>
+  <dt><%= Product.human_attribute_name(:category) %></dt>
+  <dd><%= @product.category %></dd>
+  <dt><%= Product.human_attribute_name(:price) %></dt>
+  <dd><%= number_to_currency @product.price %></dd>
+  <dt><%= Product.human_attribute_name(:description) %></dt>
+  <dd><%= @product.description %></dd>
+  <dt>Anunciante:</dt>
+  <dd><%= link_to "#{@product.profile.social_name}", @product.profile %></dd>
+  <dt><%= Product.human_attribute_name(:images) %></dt>
+  <% @product.images.each do |image| %>
+    <dd><%= image_tag image %></dd>
+  <% end %>
+</dl>
