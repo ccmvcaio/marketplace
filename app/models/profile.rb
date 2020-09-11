@@ -2,6 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
   belongs_to :enterprise
   has_many :products
+  has_many :comments
 
   validates :full_name, :social_name, :cpf, :birth_date,
             :department, :role, presence: true

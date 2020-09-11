@@ -16,3 +16,8 @@
     <dd><%= image_tag image %></dd>
   <% end %>
 </dl>
+
+<p><h3>Comentários:</h3></p>
+<%= @product.comments.each do |comment| %>
+  <p><%= "#{comment.send_date}: #{comment.body}" %></p>
+<% end %>
