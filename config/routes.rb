@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show, :new, :create] do
     get 'search', on: :collection
     resource :comments, only: [:new, :create]
+    resource :sales, only: [:new, :create]
   end
+  resources :sales, only: [:index]
 end

@@ -1,0 +1,13 @@
+---
+pt-BR:
+  activerecord:
+    model:
+      sale:
+        one: 'Venda'
+        other: 'Vendas'
+    attributes:
+      sale:
+        final_price: 'Preço final'
+        status: 'Status'
+        profile_id: 'Perfil'
+        product_id: 'Produto'

@@ -1,0 +1,6 @@
+
+<% @current_profile_products.each do |product| %>
+  <%= return "#{product.name} - Aguardando confirmação" if product.waiting_confirmation? %>
+<% end %>
+
+soaeiu

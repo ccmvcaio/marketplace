@@ -1,0 +1,11 @@
+<% if @sale.errors.present? %>
+  <% @sale.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% else %>
+  <%= form_with model: [@product, @sale], local: true do |f| %>
+    <%= f.label :final_price %>
+    <%= f.number_field :final_price %>
+    <%= f.submit 'Confirmar' %>
+  <% end %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_013950) do
+ActiveRecord::Schema.define(version: 2020_09_11_192529) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_09_11_013950) do
     t.integer "profile_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["profile_id"], name: "index_products_on_profile_id"
   end
 
@@ -80,6 +81,17 @@ ActiveRecord::Schema.define(version: 2020_09_11_013950) do
     t.integer "enterprise_id", null: false
     t.index ["enterprise_id"], name: "index_profiles_on_enterprise_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.decimal "final_price"
+    t.date "sale_date"
+    t.integer "product_id", null: false
+    t.integer "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_sales_on_product_id"
+    t.index ["profile_id"], name: "index_sales_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,4 +113,6 @@ ActiveRecord::Schema.define(version: 2020_09_11_013950) do
   add_foreign_key "products", "profiles"
   add_foreign_key "profiles", "enterprises"
   add_foreign_key "profiles", "users"
+  add_foreign_key "sales", "products"
+  add_foreign_key "sales", "profiles"
 end
