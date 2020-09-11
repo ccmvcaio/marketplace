@@ -6,11 +6,11 @@
   <%= f.submit 'Buscar'%>
 <% end %>
 
-<% if @available_products.empty? %>
+<% if @same_enterprise_products.empty? %>
   <h3>Nenhum produto encontrado!</h3>
 <% else %>
   <ul>
-  <% @available_products.each do |product| %>
+  <% @same_enterprise_products.each do |product| %>
       <li><%=link_to "#{product.name} - #{number_to_currency product.price}", product%></li>
   <% end %>
   </ul>

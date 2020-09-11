@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @available_products = set_available_products(@products)
+    @same_enterprise_products = set_same_enterprise_products(@products)
   end
 
   def new
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     @products = Product.where("name LIKE (?)", "%#{params[:q]}%")
             .or(Product.where("category LIKE (?)", "%#{params[:q]}%")
             .or(Product.where("description LIKE (?)", "%#{params[:q]}%")))
-    @available_products = set_available_products(@products)
+    @same_enterprise_products = set_same_enterprise_products(@products)
     render :index
   end
 
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :category, :price, :description, images: [])
   end
 
-  def set_available_products(products)
+  def set_same_enterprise_products(products)
     products.find_all {|product| product.profile.enterprise_id == 
                                  current_user.profile.enterprise_id}
   end
