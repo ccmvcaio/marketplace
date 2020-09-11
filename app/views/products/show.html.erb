@@ -18,6 +18,16 @@
 </dl>
 
 <p><h3>Comentários:</h3></p>
-<%= @product.comments.each do |comment| %>
-  <p><%= "#{comment.send_date}: #{comment.body}" %></p>
+<% @product.comments.each do |comment| %>
+  <strong><%= "#{comment.profile.social_name}"%></strong>
+  <%="  #{l comment.send_date, format: :long}:" %>
+  <div>
+  <%= "#{comment.body}" %>
+  </div>
+<% end %>
+
+<%= form_with model: [@product, @product.comments.build], local: true do |f| %>
+  <%= f.label :body, 'Enviar comentário' %>
+  <%= f.text_area :body %>
+  <%= f.submit 'Enviar' %>
 <% end %>
