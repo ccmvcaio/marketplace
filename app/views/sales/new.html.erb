@@ -1,3 +1,6 @@
+<h2>Produto:</h2>
+<%= render @product %>
+
 <% if @sale.errors.present? %>
   <% @sale.errors.full_messages.each do |message| %>
     <%= message %>

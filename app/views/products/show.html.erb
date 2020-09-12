@@ -18,8 +18,12 @@
 <% end %>
 
 <% if @product.waiting_confirmation? %>
-  <strong>Aguardando confirmação de venda</strong>
-  <%= link_to 'Confirmar venda', edit_product_sales_path(@product.id) %>
+  <% if @product.profile == current_user.profile %>
+    <strong>Aguardando confirmação de venda</strong>
+    <%= link_to 'Confirmar venda', edit_product_path(@product.id) %>
+  <% else %>
+    <strong>Aguardando confirmação de venda</strong>  
+  <% end %>
 <% else %>
   <%= link_to 'Comprar', new_product_sales_path(@product.id) %>
 <% end %>

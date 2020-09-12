@@ -1,8 +1,0 @@
-<h2>Produto:</h2>
-<%= render @product %>
-
-<strong>Comprador(a): </strong>
-<%= link_to" #{@product.sale.profile.social_name}", @product.sale.profile %>
-<div>
-Preço final:<%= " #{number_to_currency @product.sale.final_price}"%>
-</div>
