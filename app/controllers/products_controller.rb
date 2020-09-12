@@ -32,8 +32,14 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @sale = @product.sale
     @product.update(product_params)
-    redirect_to sales_path
+    if @product.available?
+      @product.sale = Sale.destroy(@sale.id)
+      redirect_to @product
+    else
+      redirect_to sales_path
+    end
   end
 
   def search
@@ -49,7 +55,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :category, :price, :description,:status,
-                                    images: [])
+                                    :sale_id, images: [])
   end
 
   def set_same_enterprise_products(products)

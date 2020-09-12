@@ -26,7 +26,7 @@ class SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:final_price)
+    params.require(:sale).permit(:final_price, :product_id)
   end
 
   def set_current_profile_products(products)
