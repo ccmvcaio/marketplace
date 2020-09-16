@@ -4,6 +4,8 @@ class SalesController < ApplicationController
   def index
     @products = Product.all
     @current_profile_products = set_current_profile_products(@products)
+    @sales = Sale.all
+    @current_profile_sales = set_current_profile_sales(@sales)
   end
 
   def new
@@ -31,5 +33,9 @@ class SalesController < ApplicationController
 
   def set_current_profile_products(products)
     products.find_all {|product| product.profile == current_user.profile}
+  end
+
+  def set_current_profile_sales(sales)
+    sales.find_all {|sale| sale.profile == current_user.profile}
   end
 end

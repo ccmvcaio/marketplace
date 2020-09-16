@@ -24,6 +24,11 @@
   <% else %>
     <strong>Aguardando confirmação de venda</strong>  
   <% end %>
+<% elsif %>
+  <% if @product.sold? %>
+    <strong>Vendido</strong>
+    <%= "Preço final: #{number_to_currency @product.sale.final_price}"%>
+  <% end %>
 <% else %>
   <%= link_to 'Comprar', new_product_sales_path(@product.id) %>
 <% end %>

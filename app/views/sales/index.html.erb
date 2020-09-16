@@ -1,5 +1,6 @@
 <%= link_to 'Voltar', root_path %>
 
+<p><strong>Produtos anunciados:</strong></p>
 <ul>
 <% @current_profile_products.each do |product| %>
   <% if product.waiting_confirmation? %>
@@ -8,6 +9,24 @@
     <li><%= "#{product.name} - Vendido" %></li>
   <% else %>
     <li><%= "#{product.name} - Disponível" %></li>
+  <% end %>
+<% end %>
+</ul>
+
+<strong>Produtos comprados:</strong>
+<ul>
+<% @current_profile_sales.each do |sale| %>
+  <% if sale.product.sold? %>
+    <li><%= link_to "#{sale.product.name} #{number_to_currency sale.final_price}", sale.product%></li>
+  <% end %>
+<% end %>
+</ul>
+
+<strong>Produtos aguardando confirmação:</strong>
+<ul>
+<% @current_profile_sales.each do |sale| %>
+  <% if sale.product.waiting_confirmation? %>
+    <li><%= link_to "#{sale.product.name} #{number_to_currency sale.final_price}", sale.product%></li>
   <% end %>
 <% end %>
 </ul>
