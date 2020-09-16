@@ -26,7 +26,7 @@ feature 'Seller finish a sale' do
     select 'Vender', from: 'Autorizar venda'
     click_on 'Confirmar'
 
-    expect(page).to have_content('Panela - Vendido')
+    expect(page).to have_content('Panela R$ 60,00 - Vendido')
     expect(pan.reload).to be_sold
   end
 

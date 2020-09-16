@@ -6,9 +6,11 @@
   <% if product.waiting_confirmation? %>
     <li><%= link_to "#{product.name} - Aguardando confirmação", product %></li>
   <% elsif product.sold? %>
-    <li><%= "#{product.name} - Vendido" %></li>
+    <li><%= link_to "#{product.name} #{number_to_currency product.sale.final_price} 
+                     - Vendido", product %></li>
   <% else %>
-    <li><%= "#{product.name} - Disponível" %></li>
+    <li><%= link_to "#{product.name} #{number_to_currency product.price} 
+                     - Disponível", product%></li>
   <% end %>
 <% end %>
 </ul>
