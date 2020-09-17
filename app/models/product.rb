@@ -5,6 +5,6 @@ class Product < ApplicationRecord
   has_one :sale
   validates :name, :category, :price, :description, presence: true
 
-  enum status: {available: 0, waiting_confirmation: 5, sold: 10}
+  enum status: {available: 0, waiting_confirmation: 5, sold: 10, canceled:  15}
 
 end

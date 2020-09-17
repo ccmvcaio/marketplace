@@ -1,4 +1,7 @@
 <%= link_to 'Voltar', products_path %>
+<% if @product.sale.nil? %>
+  <%= link_to 'Editar produto', edit_product_path %>
+<% end %>
 
 <%= render @product %>
 
@@ -20,7 +23,7 @@
 <% if @product.waiting_confirmation? %>
   <% if @product.profile == current_user.profile %>
     <strong>Aguardando confirmação de venda</strong>
-    <%= link_to 'Confirmar venda', edit_product_path(@product.id) %>
+    <%= link_to 'Confirmar venda', edit_product_path %>
   <% else %>
     <strong>Aguardando confirmação de venda</strong>  
   <% end %>

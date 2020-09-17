@@ -1,14 +1,19 @@
-<h2>Produto:</h2>
-<%= render @product %>
+<% if @product.sale.nil? %>
+  <h2>Editar produto:</h3>
+  <%= render partial: 'form', locals: {product: @product} %>  
+<% else %>
+  <h2>Produto:</h2>
+  <%= render @product %>
 
-<strong>Comprador(a): </strong>
-<%= link_to" #{@product.sale.profile.social_name}", @product.sale.profile %>
-<div>
-Preço final:<%= " #{number_to_currency @product.sale.final_price}"%>
-</div>
+  <strong>Comprador(a): </strong>
+  <%= link_to" #{@product.sale.profile.social_name}", @product.sale.profile %>
+  <div>
+  Preço final:<%= " #{number_to_currency @product.sale.final_price}"%>
+  </div>
 
-<%= form_with model: @product, local: true do |f| %>
-  <%= f.label :status, 'Autorizar venda'%>
-  <%= f.select(:status, options_for_select([['Vender', :sold], ['Cancelar', :available]])) %>
-  <%= f.submit 'Confirmar' %>
+  <%= form_with model: @product, local: true do |f| %>
+    <%= f.label :status, 'Autorizar venda'%>
+    <%= f.select(:status, options_for_select([['Vender', :sold], ['Cancelar', :canceled]])) %>
+    <%= f.submit 'Confirmar' %>
+  <% end %>
 <% end %>

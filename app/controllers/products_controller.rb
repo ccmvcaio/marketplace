@@ -33,12 +33,19 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @sale = @product.sale
-    @product.update(product_params)
-    if @product.available?
-      @product.sale = Sale.destroy(@sale.id)
-      redirect_to @product
+    if @product.update(product_params)
+      if @product.canceled?
+        @product.available!
+        @product.sale = Sale.destroy(@sale.id)
+        redirect_to @product
+      elsif
+        @product.sold?
+        redirect_to sales_path
+      else
+        redirect_to @product
+      end
     else
-      redirect_to sales_path
+      render :edit
     end
   end
 

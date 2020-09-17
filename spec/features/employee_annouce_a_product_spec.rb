@@ -19,7 +19,7 @@ feature 'Employee announce a product' do
     fill_in 'Preço', with: '50,00'
     fill_in 'Descrição', with: 'Panela usada com poucos arranhados'
     attach_file 'Imagens', Rails.root.join('spec/support/panela.jpg')
-    click_on 'Anunciar'
+    click_on 'Confirmar'
 
     expect(page).to have_content('Panela')
     expect(page).to have_content('Cozinha')
@@ -50,7 +50,7 @@ feature 'Employee announce a product' do
     visit root_path
     click_on 'Produtos'
     click_on 'Anunciar um produto'
-    click_on 'Anunciar'
+    click_on 'Confirmar'
 
     expect(page).to have_content('não pode ficar em branco', count: 4)
   end
