@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :profile do
-    sequence(:full_name) { |i| "Nome#{i} Sobrenome#{i}" }
-    sequence(:social_name) { |i| "Nome#{i}" }
+    sequence(:full_name) { |i| "Lorem#{i} Ipsum#{i}" }
+    sequence(:social_name) { |i| "Lorem#{i}" }
     sequence(:birth_date) { |i| "0#{i}/12/1992" }
     role { 'Dev' }
     department { 'Tecnologia' }

@@ -9,4 +9,9 @@ Rails.application.routes.draw do
     resource :sales, only: [:new, :create]
   end
   resources :sales, only: [:index]
+  namespace :api do
+    namespace :v1 do
+      resources :products, only: %i[index show create]
+    end
+  end
 end
